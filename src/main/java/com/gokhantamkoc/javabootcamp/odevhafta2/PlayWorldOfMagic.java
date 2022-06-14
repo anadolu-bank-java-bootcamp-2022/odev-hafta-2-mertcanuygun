@@ -33,17 +33,26 @@ public class PlayWorldOfMagic implements CommandLineRunner {
 			System.out.println("Result is not correct!");
 		}
 	}
-	
+
 	public static int resolveBattle(
 			String[] magicianSpells,
 			float[] spellDamageInfo,
 			String[] bossNames,
 			float[] bossHPs
 			) {
-		
+
+
+
 		int spellsUsed = 0;
 		// ______ BASLANGIC _______ Kodunuz buradan baslamali
-		
+		float totalHP = spellDamageInfo[0];
+		for (int i = 0; i<= 9; i++){
+				totalHP -= bossHPs[0];
+				if (totalHP <= 0) {
+					break;
+			}
+			spellsUsed += 1;
+		}
 		// ______ SON _______ Kodunuz burada bitmeli
 		/* NOT: ______ BASLANGIC _______ ve ______ SON _______ 
 		 * arasina istediginiz kadar sayida satir ekleyebilirsiniz.
