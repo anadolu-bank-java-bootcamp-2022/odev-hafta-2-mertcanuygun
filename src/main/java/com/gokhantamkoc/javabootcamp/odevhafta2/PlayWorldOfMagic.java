@@ -45,13 +45,20 @@ public class PlayWorldOfMagic implements CommandLineRunner {
 
 		int spellsUsed = 0;
 		// ______ BASLANGIC _______ Kodunuz buradan baslamali
-		float totalHP = spellDamageInfo[0];
-		for (int i = 0; i<= 9; i++){
-				totalHP -= bossHPs[0];
+		float chosenSpell = spellDamageInfo[0];
+		float totalHP;
+		for (int i = 0; i<3; i++){  //3 canavar için yazılan döngü.
+			for (int j = 0; j<2; j++) { //tek atışta canavarı öldüremeyen büyüler için tekrar döngüsü.
+				totalHP = bossHPs[i] - chosenSpell;
+				spellsUsed += 1;
+				if(totalHP>0){
+					totalHP-=chosenSpell;
+					spellsUsed += 1;
+				}
 				if (totalHP <= 0) {
 					break;
+				}
 			}
-			spellsUsed += 1;
 		}
 		// ______ SON _______ Kodunuz burada bitmeli
 		/* NOT: ______ BASLANGIC _______ ve ______ SON _______ 
